@@ -16,3 +16,20 @@ databaseChangeLog:
             relativeToChangelogFile: true
             splitStatements: false
             stripComments: false
+  - changeSet:
+      id: ddl-tables-002
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,tables"
+      comment: "schedule_exception: a day off or custom hours for one date, one per barber and date."
+      changes:
+        - sqlFile:
+            path: 002_create_schedule_exception.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/002_create_schedule_exception.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
