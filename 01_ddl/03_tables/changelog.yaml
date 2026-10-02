@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-tables-001
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,tables"
+      comment: "barber_schedule: weekly hours per barber and day; the end is always after the start."
+      changes:
+        - sqlFile:
+            path: 001_create_barber_schedule.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_barber_schedule.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
