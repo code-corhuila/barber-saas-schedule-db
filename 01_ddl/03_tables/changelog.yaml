@@ -1,1 +1,52 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-tables-001
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,tables"
+      comment: "barber_schedule: weekly hours per barber and day; the end is always after the start."
+      changes:
+        - sqlFile:
+            path: 001_create_barber_schedule.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/001_create_barber_schedule.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+  - changeSet:
+      id: ddl-tables-002
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,tables"
+      comment: "schedule_exception: a day off or custom hours for one date, one per barber and date."
+      changes:
+        - sqlFile:
+            path: 002_create_schedule_exception.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/002_create_schedule_exception.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+  - changeSet:
+      id: ddl-tables-003
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,tables"
+      comment: "idempotency_key: makes every creation safe to retry (norm 5.3.8)."
+      changes:
+        - sqlFile:
+            path: 003_create_idempotency_key.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/03_tables/003_create_idempotency_key.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
