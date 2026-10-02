@@ -1,1 +1,18 @@
-databaseChangeLog: []
+databaseChangeLog:
+  - changeSet:
+      id: ddl-indexes-001
+      author: carlosleal16
+      labels: "HU-APPT-001,ddl,indexes"
+      comment: "The availability lookup per barber and weekday and the tenant filter. The exception lookup uses uq_schedule_exception_barber_date."
+      changes:
+        - sqlFile:
+            path: 001_create_indexes.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
+      rollback:
+        - sqlFile:
+            path: ../../05_rollbacks/01_ddl/10_indexes/001_create_indexes.rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+            stripComments: false
