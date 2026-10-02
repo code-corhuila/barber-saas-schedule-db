@@ -1,0 +1,2 @@
+# Deliberately empty: closed sets of values are a CHECK, never an ENUM (annex A).
+databaseChangeLog: []
